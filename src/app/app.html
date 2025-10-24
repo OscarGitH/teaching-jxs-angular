@@ -1,0 +1,20 @@
+<div class="tool-carousel">
+  <img alt="pokemon-icon-name" [src]="POKEMON" class="tool-carousel-icon" (click)="closeAbout()"/>
+  <span class="toolbar-spacer"></span>
+  <mat-toolbar class="matToolbar glassy-colors">
+    <span class="toolbar-spacer"></span>
+    <p>Pokédex: première génération</p>
+    <span class="toolbar-spacer"></span>
+  </mat-toolbar>
+  <button class="glassy-colors" aria-label="about" (click)="openAbout()">
+    <mat-icon>info</mat-icon>
+  </button>
+</div>
+
+<div class="appContent">
+  @if (showAbout()) {
+    <app-about-page></app-about-page>
+  } @else {
+    <app-my-component></app-my-component>
+  }
+</div>

@@ -1,0 +1,70 @@
+<div class="research-form">
+  <form>
+    <div class="form-field">
+      <mat-label>Nom ou numéro</mat-label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="selectedPokemon" name="input1" placeholder="Nom ou numéro"
+               (keyup.enter)="onPokemonSelected()">
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-label>Input en "readonly"</mat-label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="selectedPokemon" name="input2" placeHolder="Input en readonly" readonly>
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-label>Filtre par nom dans la liste</mat-label>
+      <mat-form-field>
+        <input matInput [(ngModel)]="filtre" name="input3" placeholder="Filtre par nom dans la liste">
+      </mat-form-field>
+    </div>
+    <div class="form-field">
+      <mat-label>Pokémon</mat-label>
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedPokemon" name="selectedPokemon" placeholder="Choisissez un Pokémon">
+          <mat-option *ngFor="let pokemon of pokedex | filterPokemonPipe : 'name' : filtre" [value]="pokemon.name">
+            {{ pokemon.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <button class="glassy-colors" aria-label="search" (click)="onPokemonSelected()">
+      <mat-icon>search</mat-icon>
+    </button>
+
+
+    <p>{{ selectedPokemon }}</p>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+@if(isLoading) {
+  <div class="loader-container">
+    <img [src]="LOADER" alt="Chargement..." class="loader-img" />
+
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progressValue">
+    </mat-progress-bar>
+  </div>
+} @else {
+  <mat-grid-list
+    cols="4"
+    rowHeight="1:1"
+  >
+    <mat-grid-tile *ngFor="let p of pagedPokedex | filterPokemonPipe : 'name' : selectedPokemon">
+      <app-pokemon-card [pokemon]="p"></app-pokemon-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-paginator
+    [length]="pokedex.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 20, 50]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+}

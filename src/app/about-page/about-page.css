@@ -1,0 +1,35 @@
+.about-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  color: var(--mat-sys-on-surface);
+  background: color-mix(in srgb, var(--mat-sys-primary-container) 30%, transparent);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.about-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-container h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.about-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.about-container a {
+  color: var(--mat-sys-primary);
+  text-decoration: none;
+}
+
+.about-container a:hover {
+  text-decoration: underline;
+}
+

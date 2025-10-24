@@ -1,0 +1,63 @@
+.research-form form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  width: 100%;
+}
+
+.form-field {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  color: #555;
+}
+
+.loader-img {
+  width: 20%;
+  height: auto;
+}
+
+mat-progress-bar {
+  width: 80%;
+  margin-top: 10px;
+}
+
+.research-form button {
+  flex: 0 0 auto;
+  width: 60px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glassy-colors {
+  color: var(--mat-sys-on-surface);
+  background: color-mix(in srgb, var(--mat-sys-primary-container) 30%, transparent);
+
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+.research-form button:hover {
+  background: color-mix(in srgb, var(--mat-sys-primary-container) 60%, transparent);
+}
+
+.research-form button:active {
+  background: color-mix(in srgb, var(--mat-sys-primary-container) 15%, transparent);
+}
